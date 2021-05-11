@@ -18,8 +18,9 @@ BLUE='\033[1;34m'
 NC='\033[0m' # No Color
 
 # script configuration
-BASE_URL='https://raw.githubusercontent.com/Azure/live-video-analytics/master/edge/setup' # location of remote files used by the script
-DEFAULT_REGION='centralus'
+#BASE_URL='https://raw.githubusercontent.com/Azure/live-video-analytics/master/edge/setup' # location of remote files used by the script
+BASE_URL='https://raw.githubusercontent.com/chmitch/live-video-analytics/master/edge/setup'
+DEFAULT_REGION='westus2'
 ENV_FILE='edge-deployment/.env'
 APP_SETTINGS_FILE='appsettings.json'
 VM_CREDENTIALS_FILE='vm-edge-device-credentials.txt'
@@ -263,7 +264,7 @@ if [[ "$OWN_DEVICE" == "N" ]]; then
         --subnet 'default' \
         --custom-data $CLOUD_INIT_FILE \
         --public-ip-address "" \
-        --size "Standard_DS3_v2" \
+        --size "Standard_NC6" \
         --tags sample=lva \
         --output none
         checkForError
