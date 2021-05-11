@@ -62,7 +62,7 @@
           "name": "computerVisionExtension",
           "endpoint": {
             "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-            "url": "${grpcUrl}",
+            "url": "tcp://spatialAnalysis:50051",
             "credentials": {
               "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
               "username": "${spatialanalysisusername}",

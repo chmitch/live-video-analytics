@@ -2,6 +2,18 @@
 
 ##################################################################################################
 
+# This portion of the script ensures the nvidia gpu drivers are installed                        #
+
+##################################################################################################
+
+sudo add-apt-repository -y ppa:graphics-drivers
+sudo apt-get install -y nvidia-driver-430
+sudo apt install -y ocl-icd-opencl-dev
+sudo apt-get update
+
+
+##################################################################################################
+
 # This script creates folders and downloads the media samples needed for running LVA             #
 
 ##################################################################################################
