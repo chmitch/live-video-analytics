@@ -40,6 +40,7 @@ runcmd:
         sudo ln -s /dev/null /etc/systemd/system/iotedge.service
         apt install iotedge
         sed -i "s#\(device_connection_string: \).*#\1\"xDEVICE_CONNECTION_STRINGx\"#g" /etc/iotedge/config.yaml 
+        systemctl unmask iotedge
         systemctl start iotedge
 
         mkdir /home/lvaadmin/samples
