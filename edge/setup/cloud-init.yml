@@ -36,6 +36,19 @@ runcmd:
           sleep 3
         done
 
+        #Install nvidia docker for GPU support
+        distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+        curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+        curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+        sudo apt-get update
+        sudo apt-get install -y docker-ce nvidia-docker2
+        sudo systemctl restart docker
+
+        # Wait for docker daemon to start
+        while [ $(ps -ef | grep -v grep | grep docker | wc -l) -le 0 ]; do 
+          sleep 3
+        done
+
         # Prevent iotedge from starting before the device connection string is set in config.yaml
         sudo ln -s /dev/null /etc/systemd/system/iotedge.service
         apt install iotedge=1.0.9*
