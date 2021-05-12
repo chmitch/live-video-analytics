@@ -51,7 +51,7 @@ runcmd:
 
         # Prevent iotedge from starting before the device connection string is set in config.yaml
         sudo ln -s /dev/null /etc/systemd/system/iotedge.service
-        apt install iotedge=1.0.9*
+        sudo apt-get install iotedge=1.0.9*
         sed -i "s#\(device_connection_string: \).*#\1\"xDEVICE_CONNECTION_STRINGx\"#g" /etc/iotedge/config.yaml 
         systemctl unmask iotedge
         systemctl start iotedge
@@ -76,4 +76,5 @@ runcmd:
         chown -R lvaadmin /var/lib/azuremediaservices
         chown -R lvaadmin /var/media
 
+        sudo apt-get update
       ) &
