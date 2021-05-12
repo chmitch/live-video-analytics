@@ -32,17 +32,13 @@ runcmd:
       set -x
       (
         # Wait for docker daemon to start
-        while [ $(ps -ef | grep -v grep | grep docker | wc -l) -le 0 ]; do 
+        while [ $(ps -ef | grep -v grep | grep dockerd | wc -l) -le 0 ]; do 
           sleep 3
         done
 
         # Prevent iotedge from starting before the device connection string is set in config.yaml
         sudo ln -s /dev/null /etc/systemd/system/iotedge.service
-        sudo apt-get install iotedge=1.0.9*
-        sed -i "s#\(device_connection_string: \).*#\1\"xDEVICE_CONNECTION_STRINGx\"#g" /etc/iotedge/config.yaml 
-        systemctl unmask iotedge
-        systemctl start iotedge
-
+        apt install iotedge=1.0.9*
         sed -i "s#\(device_connection_string: \).*#\1\"xDEVICE_CONNECTION_STRINGx\"#g" /etc/iotedge/config.yaml 
         systemctl unmask iotedge
         systemctl start iotedge
