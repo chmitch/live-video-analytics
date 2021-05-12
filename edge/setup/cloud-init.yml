@@ -32,7 +32,7 @@ runcmd:
       set -x
       (
         # Wait for docker daemon to start
-        while [ $(ps -ef | grep -v grep | grep dockerd | wc -l) -le 0 ]; do 
+        while [ $(ps -ef | grep -v grep | grep containerd | wc -l) -le 0 ]; do 
           sleep 3
         done
 
@@ -40,7 +40,6 @@ runcmd:
         sudo ln -s /dev/null /etc/systemd/system/iotedge.service
         apt install iotedge
         sed -i "s#\(device_connection_string: \).*#\1\"xDEVICE_CONNECTION_STRINGx\"#g" /etc/iotedge/config.yaml 
-        systemctl unmask iotedge
         systemctl start iotedge
 
         mkdir /home/lvaadmin/samples
