@@ -257,7 +257,7 @@ if [[ "$OWN_DEVICE" == "N" ]]; then
         az vm create \
         --resource-group $RESOURCE_GROUP \
         --name $IOT_EDGE_VM_NAME \
-        --image Canonical:UbuntuServer:18.04-LTS:latest \
+        --image nvidia:ngc_base_image_version_b:ngc-base-test-b-version-21-02-2:latest \
         --admin-username $IOT_EDGE_VM_ADMIN \
         --admin-password $IOT_EDGE_VM_PWD \
         --vnet-name $VNET \
