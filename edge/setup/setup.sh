@@ -264,7 +264,7 @@ if [[ "$OWN_DEVICE" == "N" ]]; then
         --subnet 'default' \
         --custom-data $CLOUD_INIT_FILE \
         --public-ip-address "" \
-        --size "Standard_NC6" \
+        --size "Standard_NC6_Promo" \
         --tags sample=lva \
         --output none
         checkForError
