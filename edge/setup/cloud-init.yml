@@ -77,4 +77,5 @@ runcmd:
         chown -R lvaadmin /var/media
 
         sudo apt-get update
+        sudo reboot
       ) &
